@@ -18,7 +18,7 @@ function AppTextInput({ ...Props }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: defaultStyles.colors.secondary,
+    backgroundColor: defaultStyles.colors.light_grey,
     borderRadius: 25,
     width: "100%",
     padding: 15,
