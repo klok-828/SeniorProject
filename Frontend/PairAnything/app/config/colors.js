@@ -6,4 +6,5 @@ export default {
   on_surface: "#333", //on white surface -> black text
   on_primary: "#fff", //on primary color -> white text
   medium_gray: "#adadad",
+  error: "#eb4034",
 };
