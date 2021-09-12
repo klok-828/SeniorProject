@@ -1,12 +1,23 @@
 import React from "react";
-import { Image, View, StyleSheet } from "react-native";
+import { Image, View, StyleSheet, Dimensions } from "react-native";
+
+let { width, height } = Dimensions.get("window");
+console.log(height);
+
+if (height <= 600) {
+  height = height - height / 2;
+}
 
 //Component for styling the Pair Anything logo
 function Logo() {
   return (
-    <View>
+    <View style={{ paddingTop: height - height * 0.95 }}>
       <Image
-        style={{ width: 150, height: 150, resizeMode: "contain" }}
+        style={{
+          width: width - width * 0.7,
+          height: height - height * 0.8,
+          resizeMode: "contain",
+        }}
         source={require("../assets/logo.png")}
       />
     </View>
