@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, Dimensions, View } from "react-native";
 
 import Screen from "../components/Screen";
 import Logo from "../components/Logo";
 import AppButton from "../components/AppButton";
 import AppText from "../components/AppText";
 import AppTextInput from "../components/AppTextInput";
-import { ArrowLeft } from "react-native-feather";
 import colors from "../config/colors";
 import { emailValidator } from "../helpers/emailValidator";
+import BackButton from "../components/BackButton";
+
+const { width, height } = Dimensions.get("window");
 
 function ForgotPasswordScreen(props) {
   const [email, setEmail] = useState();
@@ -30,34 +32,30 @@ function ForgotPasswordScreen(props) {
   }
 
   return (
-    <Screen style={styles.container}>
-      <TouchableOpacity
-        style={{ width: "100%" }}
-        onPress={() => console.log("arrow pressed.")}
-      >
-        <ArrowLeft stroke={colors.on_surface} />
-      </TouchableOpacity>
-      <Logo />
-      <AppText style={styles.forgot}>Forgot Password</AppText>
-      <AppTextInput
-        autoCapitalize="none"
-        autoCorrect={false}
-        keyboardType="email-address"
-        onChangeText={(text) => setEmail({ value: text })}
-        placeholder="Email"
-        textContentType="emailAddress"
-      />
-      {emailError.value && (
-        <AppText
-          style={{ color: colors.error, fontSize: 14, paddingBottom: 5 }}
-        >
-          {emailResult}
-        </AppText>
-      )}
-      <AppButton
-        title="Reset Password"
-        onPress={() => handleSubmit(email.value)}
-      />
+    <Screen>
+      <View style={{ marginLeft: width - width * 0.98 }}>
+        <BackButton />
+      </View>
+      <View style={styles.container}>
+        <Logo />
+        <AppText style={styles.forgot}>Forgot Password</AppText>
+        <AppTextInput
+          autoCapitalize="none"
+          autoCorrect={false}
+          keyboardType="email-address"
+          onChangeText={(text) => setEmail({ value: text })}
+          placeholder="Email"
+          textContentType="emailAddress"
+          icon="email-outline"
+        />
+        {emailError.value && (
+          <AppText style={styles.result}>{emailResult}</AppText>
+        )}
+        <AppButton
+          title="Reset Password"
+          onPress={() => handleSubmit(email.value)}
+        />
+      </View>
     </Screen>
   );
 }
@@ -67,12 +65,17 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     width: "100%",
-    padding: 15,
+    paddingHorizontal: width - width * 0.97,
   },
   forgot: {
-    fontSize: 40,
-    padding: 15,
-    fontWeight: "500",
+    fontSize: 37,
+    padding: height - height * 0.98,
+    fontFamily: "Montserrat_800ExtraBold",
+  },
+  result: {
+    color: colors.error,
+    fontSize: 14,
+    paddingBottom: 5,
   },
 });
 
