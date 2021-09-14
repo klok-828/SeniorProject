@@ -15,6 +15,7 @@ import AppButton from "../components/AppButton";
 
 const { width, height } = Dimensions.get("window");
 
+//Welcome Screen that user sees
 function WelcomeScreen(props) {
   let [fontsLoaded] = useFonts({
     Montserrat_300Light,
