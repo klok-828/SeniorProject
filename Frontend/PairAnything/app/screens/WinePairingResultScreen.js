@@ -49,7 +49,7 @@ function handleCardPressed(name) {
   console.log(name);
 }
 
-function winePairingResultScreen({ searchedFood = "chicken marsala" }) {
+function WinePairingResultScreen({ searchedFood = "chicken marsala" }) {
   return (
     <Screen>
       <AppText style={styles.whatPairs}>HERE'S WHAT PAIRS WITH</AppText>
@@ -168,4 +168,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default winePairingResultScreen;
+export default WinePairingResultScreen;
