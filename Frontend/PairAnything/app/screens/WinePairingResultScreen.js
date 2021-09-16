@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     marginRight: width - width * 0.95,
   },
   list: {
-    paddingTop: height - height * 0.9,
+    paddingTop: height - height * 0.98,
     paddingHorizontal: width - width * 0.92,
   },
   text: {
