@@ -18,7 +18,7 @@ function Logo() {
           height: height - height * 0.8,
           resizeMode: "contain",
         }}
-        source={require("../assets/logo.png")}
+        source={require("../assets/logos/PA.png")}
       />
     </View>
   );

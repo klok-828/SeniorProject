@@ -11,6 +11,10 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ExploreCard from "./app/components/ExploreCard";
 import LoginScreen from "./app/screens/LoginScreen";
 import ForgotPasswordScreen from "./app/screens/ForgotPasswordScreen";
+import PairingSearchScreen from "./app/screens/PairingSearchScreen";
+import WinePairingResultScreen from "./app/screens/WinePairingResultScreen";
+import WineRating from "./app/components/WineRating";
+import RecommendedWineCard from "./app/components/RecommendedWineCard";
 
 export default function App() {
   const [IsReady, SetIsReady] = useState(false);
@@ -31,7 +35,7 @@ export default function App() {
     );
   }
 
-  return <LoginScreen />;
+  return <WinePairingResultScreen />;
 }
 
 const styles = StyleSheet.create({

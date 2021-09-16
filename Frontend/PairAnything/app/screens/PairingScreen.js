@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
   list: {
     paddingHorizontal: width - width * 0.95,
     shadowOpacity: 0.1,
+    shadowOffset: { width: 1, height: 1 },
   },
   or: {
     fontFamily: "Montserrat_400Regular",

@@ -8,7 +8,7 @@ export default function BackButton({ goBack }) {
     <TouchableOpacity>
       <MaterialCommunityIcons
         name="arrow-left"
-        color={colors.on_surface}
+        color={colors.dark_gray}
         size={30}
       />
     </TouchableOpacity>
