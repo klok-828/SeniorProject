@@ -5,10 +5,10 @@ import colors from "../config/colors";
 
 const { width, height } = Dimensions.get("window");
 
-function AppButton({ title, onPress, color = "primary" }) {
+function AppButton({ title, onPress, color = "primary", style }) {
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor: colors[color] }]}
+      style={[styles.button, style, { backgroundColor: colors[color] }]}
       onPress={onPress}
     >
       <Text
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: height - height * 0.98,
     width: width - width * 0.2,
-    marginVertical: 7,
   },
 });
 

@@ -9,10 +9,14 @@ import AppText from "../components/AppText";
 import colors from "../config/colors";
 import { emailValidator } from "../helpers/emailValidator";
 import { passwordValidator } from "../helpers/passwordValidator";
+import Icon from "../components/Icon";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
+let deviceHeight = Dimensions.get("screen").height;
+let windowHeight = Dimensions.get("window").height;
+let bottomNavBarHeight = deviceHeight - windowHeight; //bottom navbar on the device
 
 function LoginScreen(props) {
   const [email, setEmail] = useState({ value: "" });
@@ -99,14 +103,49 @@ function LoginScreen(props) {
         </View>
         <View style={styles.line} />
       </View>
-      <View style={{ paddingTop: height - height * 0.99 }}>
-        <MaterialCommunityIcons
-          name="facebook"
-          color={colors.facebook_blue}
-          size={30}
+      <View
+        style={{
+          flexDirection: "row",
+          paddingRight: width - width * 0.96,
+        }}
+      >
+        <Icon
+          name={"facebook"}
+          iconColor={colors.medium_gray}
+          backgroundColor={"white"}
+          size={78}
         />
+        <View
+          style={{
+            paddingTop:
+              bottomNavBarHeight > 0
+                ? height - height * 0.97
+                : height - height * 0.98,
+            paddingRight: width - width * 0.95,
+          }}
+        >
+          <Icon
+            name={"google"}
+            iconColor={"white"}
+            backgroundColor={colors.medium_gray}
+            size={34}
+          />
+        </View>
+        <View
+          style={{
+            paddingTop: bottomNavBarHeight
+              ? height - height * 0.97
+              : height - height * 0.98,
+          }}
+        >
+          <Icon
+            name={"apple"}
+            iconColor={"white"}
+            backgroundColor={colors.medium_gray}
+            size={35}
+          />
+        </View>
       </View>
-
       <AppText style={styles.forgot}>FORGOT PASSWORD</AppText>
       <AppText style={styles.continue}>CONTINUE AS GUEST</AppText>
     </Screen>
@@ -130,7 +169,8 @@ const styles = StyleSheet.create({
   forgot: {
     fontFamily: "Montserrat_800ExtraBold",
     fontSize: 10,
-    paddingTop: height - height * 0.95,
+    paddingTop:
+      bottomNavBarHeight > 0 ? height - height * 0.99 : height - height * 0.95,
     color: colors.primary,
     textDecorationLine: "underline",
   },
@@ -147,7 +187,8 @@ const styles = StyleSheet.create({
   or: {
     flexDirection: "row",
     alignItems: "center",
-    paddingTop: height - height * 0.95,
+    paddingTop:
+      bottomNavBarHeight > 0 ? height - height * 0.98 : height - height * 0.9,
   },
   orText: {
     width: width - width * 0.88,

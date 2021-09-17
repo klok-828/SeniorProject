@@ -11,7 +11,7 @@ if (height <= 600) {
 //Component for styling the Pair Anything logo
 function Logo() {
   return (
-    <View style={{ paddingTop: height - height * 0.95 }}>
+    <View>
       <Image
         style={{
           width: width - width * 0.7,

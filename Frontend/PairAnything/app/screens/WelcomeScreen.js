@@ -6,16 +6,21 @@ import Logo from "../components/Logo";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import AppButton from "../components/AppButton";
+import Icon from "../components/Icon";
 
 const { width, height } = Dimensions.get("window");
+let deviceHeight = Dimensions.get("screen").height;
+let windowHeight = Dimensions.get("window").height;
+let bottomNavBarHeight = deviceHeight - windowHeight; //bottom navbar on the device
 
 //Welcome Screen that user sees
 function WelcomeScreen(props) {
   return (
     <Screen style={styles.container}>
       <Logo />
-      <Text style={styles.welcome}>Welcome!</Text>
-      <Text style={styles.discover}>Discover your next favorite wine.</Text>
+      <Text style={styles.welcome}>Welcome to</Text>
+      <Text style={styles.pairAnything}> PairAnything </Text>
+      <Text style={styles.discover}>Where food meets wine.</Text>
       <View style={styles.getStartedButton}>
         <AppButton title={"GET STARTED"} />
       </View>
@@ -26,12 +31,48 @@ function WelcomeScreen(props) {
         </View>
         <View style={styles.line} />
       </View>
-      <View style={{ paddingTop: height - height * 0.99 }}>
-        <MaterialCommunityIcons
-          name="facebook"
-          color={colors.facebook_blue}
-          size={30}
+      <View
+        style={{
+          flexDirection: "row",
+          paddingRight: width - width * 0.96,
+        }}
+      >
+        <Icon
+          name={"facebook"}
+          iconColor={colors.medium_gray}
+          backgroundColor={"white"}
+          size={78}
         />
+        <View
+          style={{
+            paddingTop:
+              bottomNavBarHeight > 0
+                ? height - height * 0.97
+                : height - height * 0.98,
+            paddingRight: width - width * 0.95,
+          }}
+        >
+          <Icon
+            name={"google"}
+            iconColor={"white"}
+            backgroundColor={colors.medium_gray}
+            size={34}
+          />
+        </View>
+        <View
+          style={{
+            paddingTop: bottomNavBarHeight
+              ? height - height * 0.97
+              : height - height * 0.98,
+          }}
+        >
+          <Icon
+            name={"apple"}
+            iconColor={"white"}
+            backgroundColor={colors.medium_gray}
+            size={35}
+          />
+        </View>
       </View>
       <Text style={styles.haveAccount}>ALREADY HAVE AN ACCOUNT?</Text>
       <Text style={styles.signIn}>SIGN-IN</Text>
@@ -43,7 +84,6 @@ function WelcomeScreen(props) {
 //styles ordered alphabetically
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center",
     width: width,
   },
@@ -63,13 +103,14 @@ const styles = StyleSheet.create({
   getStartedButton: {
     width: "100%",
     alignItems: "center",
-    paddingTop: height - height * 0.78,
+    paddingTop:
+      bottomNavBarHeight > 0 ? height - height * 0.85 : height - height * 0.77,
   },
   haveAccount: {
     fontFamily: "Montserrat_400Regular",
     color: colors.primary,
     fontSize: 10,
-    paddingTop: height - height * 0.95,
+    paddingTop: height - height * 0.98,
   },
   line: {
     height: 1,
@@ -88,10 +129,16 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat_300Light",
   },
   welcome: {
-    fontSize: 50,
+    fontSize: 45,
     fontFamily: "Montserrat_800ExtraBold",
     color: colors.on_surface,
-    paddingTop: height - height * 0.99,
+    paddingLeft: width - width * 0.97,
+  },
+  pairAnything: {
+    fontSize: 45,
+    fontFamily: "Montserrat_800ExtraBold",
+    color: colors.on_surface,
+    paddingLeft: width - width * 0.97,
   },
   signIn: {
     fontFamily: "Montserrat_800ExtraBold",

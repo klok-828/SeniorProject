@@ -9,10 +9,14 @@ import AppTextInput from "../components/AppTextInput";
 import Logo from "../components/Logo";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
+import Icon from "../components/Icon";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
+let deviceHeight = Dimensions.get("screen").height;
+let windowHeight = Dimensions.get("window").height;
+let bottomNavBarHeight = deviceHeight - windowHeight; //bottom navbar on the device
 
 function SignUpScreen(props) {
   //useState() hook saves the state of a variable.
@@ -94,12 +98,48 @@ function SignUpScreen(props) {
         </View>
         <View style={styles.line} />
       </View>
-      <View style={{ paddingTop: height - height * 0.99 }}>
-        <MaterialCommunityIcons
-          name="facebook"
-          color={colors.facebook_blue}
-          size={30}
+      <View
+        style={{
+          flexDirection: "row",
+          paddingRight: width - width * 0.96,
+        }}
+      >
+        <Icon
+          name={"facebook"}
+          iconColor={colors.medium_gray}
+          backgroundColor={"white"}
+          size={78}
         />
+        <View
+          style={{
+            paddingTop:
+              bottomNavBarHeight > 0
+                ? height - height * 0.97
+                : height - height * 0.98,
+            paddingRight: width - width * 0.95,
+          }}
+        >
+          <Icon
+            name={"google"}
+            iconColor={"white"}
+            backgroundColor={colors.medium_gray}
+            size={34}
+          />
+        </View>
+        <View
+          style={{
+            paddingTop: bottomNavBarHeight
+              ? height - height * 0.97
+              : height - height * 0.98,
+          }}
+        >
+          <Icon
+            name={"apple"}
+            iconColor={"white"}
+            backgroundColor={colors.medium_gray}
+            size={35}
+          />
+        </View>
       </View>
       <AppText style={styles.haveAccount}>ALREADY HAVE AN ACCOUNT?</AppText>
       <AppText style={styles.signIn}>SIGN-IN</AppText>
@@ -126,14 +166,15 @@ const styles = StyleSheet.create({
     fontSize: 50,
     fontFamily: "Montserrat_800ExtraBold",
     color: colors.on_surface,
-    paddingTop: height - height * 0.99,
+    paddingTop:
+      bottomNavBarHeight > 0 ? 0 : height - height * 0.99,
     paddingBottom: height - height * 0.99,
   },
   haveAccount: {
     fontFamily: "Montserrat_400Regular",
     color: colors.primary,
     fontSize: 10,
-    paddingTop: height - height * 0.95,
+    paddingTop: height - height * 0.99,
   },
   input: {
     fontFamily: "Montserrat_400Regular",
@@ -148,7 +189,8 @@ const styles = StyleSheet.create({
   or: {
     flexDirection: "row",
     alignItems: "center",
-    paddingTop: height - height * 0.94,
+    paddingTop:
+      bottomNavBarHeight > 0 ? height - height * 0.98 : height - height * 0.88,
   },
   orText: {
     width: width - width * 0.88,

@@ -15,6 +15,7 @@ import PairingSearchScreen from "./app/screens/PairingSearchScreen";
 import WinePairingResultScreen from "./app/screens/WinePairingResultScreen";
 import WineRating from "./app/components/WineRating";
 import RecommendedWineCard from "./app/components/RecommendedWineCard";
+import FoodPairingResultScreen from "./app/screens/FoodPairingResultScreen";
 
 export default function App() {
   const [IsReady, SetIsReady] = useState(false);
@@ -35,7 +36,7 @@ export default function App() {
     );
   }
 
-  return <WinePairingResultScreen />;
+  return <FoodPairingResultScreen />;
 }
 
 const styles = StyleSheet.create({

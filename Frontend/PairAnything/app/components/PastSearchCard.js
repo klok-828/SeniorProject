@@ -7,6 +7,7 @@ import {
   Dimensions,
   TouchableWithoutFeedback,
 } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../config/colors";
 
@@ -14,44 +15,42 @@ const { width, height } = Dimensions.get("window");
 let w = width - width * 0.6;
 let h = height - height * 0.8;
 
-function ExploreCard({ onPress, name, title, desc, image }) {
+function PastSearchCard({ onPress, title, desc, image }) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View width={w} height={h} style={styles.card}>
         <Image source={image} resizeMode={"contain"} style={styles.image} />
         <View style={styles.detailsContainer}>
-          <Text
+          <View
             style={{
-              color: colors.dark_gray,
-              fontFamily: "Montserrat_700Bold",
-              fontSize: 8,
+              flexDirection: "row",
+              paddingBottom: height - height * 0.99,
             }}
-            numberOfLines={1}
           >
-            {name}
-          </Text>
-          <View style={{ paddingBottom: 5 }}>
             <Text
               style={{
                 color: colors.on_surface,
                 fontFamily: "Montserrat_700Bold",
-                fontSize: 11,
+                fontSize: 10,
+                flexShrink: 1,
               }}
-              numberOfLines={2}
             >
               {title}
             </Text>
           </View>
-          <Text
-            style={{
-              color: colors.dark_gray,
-              fontFamily: "Montserrat_400Regular",
-              fontSize: 10,
-            }}
-            numberOfLines={2}
-          >
-            {desc}
-          </Text>
+          <View style={{ flexDirection: "row" }}>
+            <MaterialCommunityIcons name="glass-wine" color={colors.primary} />
+            <Text
+              style={{
+                color: colors.primary,
+                fontFamily: "Montserrat_400Regular",
+                fontSize: 10,
+              }}
+              numberOfLines={2}
+            >
+              {desc}
+            </Text>
+          </View>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -69,7 +68,8 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
   },
   detailsContainer: {
-    padding: width - width * 0.97,
+    paddingTop: height - height * 0.98,
+    paddingHorizontal: width - width * 0.98,
   },
   image: {
     width: w,
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ExploreCard;
+export default PastSearchCard;

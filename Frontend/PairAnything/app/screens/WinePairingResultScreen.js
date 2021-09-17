@@ -1,5 +1,12 @@
 import React from "react";
-import { View, StyleSheet, Dimensions, Image, FlatList } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  Image,
+  FlatList,
+  Platform,
+} from "react-native";
 
 import AppText from "../components/AppText";
 import Screen from "../components/Screen";
@@ -10,6 +17,9 @@ import RecommendedWineCard from "../components/RecommendedWineCard";
 import AppButton from "../components/AppButton";
 
 const { width, height } = Dimensions.get("window");
+let deviceHeight = Dimensions.get("screen").height;
+let windowHeight = Dimensions.get("window").height;
+let bottomNavBarHeight = deviceHeight - windowHeight; //bottom navbar on the device
 
 //for wine rating
 let wineResult = {
@@ -17,7 +27,7 @@ let wineResult = {
   type: "WHITE WINE",
   dryRating: 2,
   lightRating: 2,
-  image: require("../assets/sauvignonBlanc.jpeg"),
+  image: require("../assets/wines/SauvignonBlanc/SauvBlanc.png"),
 };
 
 //temp info for recommended cards
@@ -59,6 +69,17 @@ function WinePairingResultScreen({ searchedFood = "chicken marsala" }) {
       </View>
       <View style={styles.line} />
       <View style={styles.wine}>
+        <View
+          style={{
+            marginTop: height - height * 0.95,
+            width: 150,
+            height: 150,
+            backgroundColor: "#FDF2DE",
+            position: "absolute",
+            borderRadius: 150 / 2,
+            marginLeft: -(width - width * 0.9),
+          }}
+        ></View>
         <Image
           source={wineResult.image}
           style={styles.image}
@@ -118,9 +139,13 @@ const styles = StyleSheet.create({
     paddingTop: height - height * 0.99,
   },
   image: {
-    marginLeft: width - width * 0.98,
+    marginLeft:
+      bottomNavBarHeight > 0
+        ? -(width - width * 0.98)
+        : -(width - width * 0.96),
     width: width - width * 0.6,
-    height: height - height * 0.7,
+    height:
+      bottomNavBarHeight > 0 ? height - height * 0.7 : height - height * 0.76,
     transform: [{ rotate: "-10deg" }],
   },
   line: {

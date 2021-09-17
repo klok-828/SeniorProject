@@ -17,7 +17,7 @@ function recommendedWineCard({ image, price, logo, name, onPress }) {
       <View
         style={styles.card}
         width={width - width * 0.6}
-        height={height - height * 0.74}
+        height={height - height * 0.73}
       >
         <View style={styles.wineAndCard}>
           <Image source={image} style={styles.image} />
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "white",
     margin: 8,
-    elevation: 15,
+    elevation: 2,
     shadowColor: colors.dark_gray,
     shadowRadius: 2,
     shadowOpacity: 0.5,
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   wineAndCard: {
     width: width - width * 0.9,
     height: height - height * 0.01,
-    marginTop: -(height - height * 0.6),
+    marginTop: -(height - height * 0.59),
     marginLeft: width - width * 0.85,
     position: "absolute",
   },
